@@ -7,6 +7,13 @@ public class Size : MonoBehaviour
  
     private Vector3 scaleChange, positionChange;
     [SerializeField] float speed;
+    float scale_0= 0.00f;
+    float scale_1 = 0.001f;
+    float scale_5 = 0.0005f;
+    float maxScale = 1.0f;
+    float minScale = 0.1f;
+
+
 
     void Awake()
     {
@@ -14,8 +21,8 @@ public class Size : MonoBehaviour
 
 
 
-        scaleChange = new Vector3(-0.001f, -0.001f, -0.001f);
-        positionChange = new Vector3(0.00f, -0.0005f, 0.00f);
+        scaleChange = new Vector3(-scale_1, -scale_1, -scale_1);
+        positionChange = new Vector3(scale_0, -scale_5, scale_0);
     }
 
     void Update()
@@ -24,7 +31,7 @@ public class Size : MonoBehaviour
         transform.position += positionChange*speed;
 
 
-        if (transform.localScale.y < 0.1f || transform.localScale.y > 1.0f)
+        if (transform.localScale.y < minScale || transform.localScale.y > maxScale)
         {
             scaleChange = -scaleChange;
             positionChange = -positionChange;
